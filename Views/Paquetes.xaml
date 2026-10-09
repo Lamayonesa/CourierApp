@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiAppMaui.Paquetes"
+             Title="Paquetes">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Mis paquetes"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Consulta el estado de tus envíos"
+                   FontSize="14"
+                   HorizontalOptions="Center" />
+
+            <Frame BorderColor="LightGray"
+                   Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Paquete #001"
+                           FontAttributes="Bold"
+                           FontSize="18" />
+                    <Label Text="Destino: Santo Domingo" />
+                    <Label Text="Estado: Pendiente"
+                           TextColor="OrangeRed" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BorderColor="LightGray"
+                   Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Paquete #002"
+                           FontAttributes="Bold"
+                           FontSize="18" />
+                    <Label Text="Destino: Santiago" />
+                    <Label Text="Estado: En tránsito"
+                           TextColor="DarkOrange" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BorderColor="LightGray"
+                   Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Paquete #003"
+                           FontAttributes="Bold"
+                           FontSize="18" />
+                    <Label Text="Destino: La Romana" />
+                    <Label Text="Estado: Entregado"
+                           TextColor="Green" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Volver"
+                    BackgroundColor="OrangeRed"
+                    TextColor="White"
+                    Clicked="OnVolverClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

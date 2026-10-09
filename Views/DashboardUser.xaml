@@ -15,11 +15,21 @@
             FontSize="30"
             HorizontalOptions="Center" />
 
-    
-        
-            
 
-            <Button
+        <Button Text="Paquetes"
+        BackgroundColor="OrangeRed"
+        TextColor="White"
+        Clicked="OnPaquetesClicked" />
+
+        <Button Text="Configuración"
+        BackgroundColor="OrangeRed"
+        TextColor="White"
+        Clicked="OnConfigClicked" />
+
+
+
+
+        <Button
                 Text="Mi Cuenta"
                 BackgroundColor="Orange"
                 WidthRequest="250"

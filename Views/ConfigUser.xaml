@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiAppMaui.ConfigUser"
+             Title="Configuración">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Configuración del usuario"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Información personal"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Entry Placeholder="Nombre completo" />
+
+            <Entry Placeholder="Correo electrónico"
+                   Keyboard="Email" />
+
+            <Entry Placeholder="Número de teléfono"
+                   Keyboard="Telephone" />
+
+            <Label Text="Preferencias"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <HorizontalStackLayout Spacing="10"
+                                   VerticalOptions="Center">
+                <Label Text="Recibir notificaciones"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand" />
+                <Switch />
+            </HorizontalStackLayout>
+
+            <Button Text="Guardar cambios"
+                    BackgroundColor="OrangeRed"
+                    TextColor="White"
+                    Clicked="OnGuardarClicked" />
+
+            <Button Text="Volver"
+                    BackgroundColor="LightGray"
+                    TextColor="Black"
+                    Clicked="OnVolverClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

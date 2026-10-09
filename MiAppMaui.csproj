@@ -71,7 +71,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="DashboardUser.xaml">
+	  <MauiXaml Update="Views\ConfigUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DashboardUser.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Paquetes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
