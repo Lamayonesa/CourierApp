@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-
+using MiAppMaui.Services;
 namespace MiAppMaui;
 
 public static class MauiProgram
@@ -19,7 +19,7 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-
+        builder.Services.AddSingleton<MemoriaService>();
         return builder.Build();
     }
 }

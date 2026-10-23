@@ -5,59 +5,56 @@
              Title="Paquetes">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="20" Spacing="12">
 
-            <Label Text="Mis paquetes"
-                   FontSize="28"
+            <Label Text="Registro de paquetes"
+                   FontSize="26"
                    FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
-            <Label Text="Consulta el estado de tus envíos"
-                   FontSize="14"
-                   HorizontalOptions="Center" />
+            <Entry x:Name="DescripcionEntry"
+                   Placeholder="Descripción del paquete" />
 
-            <Frame BorderColor="LightGray"
-                   Padding="15">
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Paquete #001"
-                           FontAttributes="Bold"
-                           FontSize="18" />
-                    <Label Text="Destino: Santo Domingo" />
-                    <Label Text="Estado: Pendiente"
-                           TextColor="OrangeRed" />
-                </VerticalStackLayout>
-            </Frame>
+            <Entry x:Name="DestinatarioEntry"
+                   Placeholder="Nombre del destinatario" />
 
-            <Frame BorderColor="LightGray"
-                   Padding="15">
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Paquete #002"
-                           FontAttributes="Bold"
-                           FontSize="18" />
-                    <Label Text="Destino: Santiago" />
-                    <Label Text="Estado: En tránsito"
-                           TextColor="DarkOrange" />
-                </VerticalStackLayout>
-            </Frame>
+            <Entry x:Name="DestinoEntry"
+                   Placeholder="Dirección de destino" />
 
-            <Frame BorderColor="LightGray"
-                   Padding="15">
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="Paquete #003"
-                           FontAttributes="Bold"
-                           FontSize="18" />
-                    <Label Text="Destino: La Romana" />
-                    <Label Text="Estado: Entregado"
-                           TextColor="Green" />
-                </VerticalStackLayout>
-            </Frame>
-
-            <Button Text="Volver"
+            <Button Text="Registrar paquete"
                     BackgroundColor="OrangeRed"
                     TextColor="White"
-                    Clicked="OnVolverClicked" />
+                    Clicked="OnRegistrarClicked" />
+
+            <Label Text="Paquetes registrados"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   Margin="0,15,0,0" />
+
+            <CollectionView x:Name="PaquetesCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                Padding="12"
+                                Margin="0,4"
+                                StrokeShape="RoundRectangle 10">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding Descripcion}"
+                                       FontAttributes="Bold"
+                                       FontSize="17" />
+                                <Label Text="{Binding Destinatario,
+                                                      StringFormat='Destinatario: {0}'}" />
+                                <Label Text="{Binding Destino,
+                                                      StringFormat='Destino: {0}'}" />
+                                <Label Text="{Binding Estado,
+                                                      StringFormat='Estado: {0}'}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

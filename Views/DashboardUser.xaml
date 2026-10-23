@@ -4,45 +4,186 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MiAppMaui.DashboardUser"
-    Title="DashboardUser">
+    Title="Menu Principal">
 
-    <VerticalStackLayout
-        Padding="20"
-        Spacing="20">
+    <ScrollView>
+        <Grid
+            Padding="15"
+            RowSpacing="10"
+            ColumnSpacing="10">
 
-        <Label
-            Text="Bienvenido a Courir App!"
-            FontSize="30"
-            HorizontalOptions="Center" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="150" />
+            </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <Button Text="Paquetes"
-        BackgroundColor="OrangeRed"
-        TextColor="White"
-        Clicked="OnPaquetesClicked" />
+            <Label
+                Text="Menú principal"
+                FontSize="28"
+                FontAttributes="Bold"
+                Grid.Row="0"
+                Grid.ColumnSpan="2" />
+                 <!--Primera Fila de Botones-->
+                <Border
+                Stroke="OrangeRed"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                Padding="12"
+                BackgroundColor="White"
+                Grid.Row="1"
+                Grid.Column="0">
 
-        <Button Text="Configuración"
-        BackgroundColor="OrangeRed"
-        TextColor="White"
-        Clicked="OnConfigClicked" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnPaquetesClicked" />
+                </Border.GestureRecognizers>
 
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="5">
 
+                    <Image
+                        Source="pedidos.png"
+                        WidthRequest="80"
+                        HeightRequest="80"
+                        Aspect="AspectFit" />
 
+                    <Label
+                        Text="Pedidos"
+                        HorizontalOptions="Center" />
 
-        <Button
-                Text="Mi Cuenta"
-                BackgroundColor="Orange"
-                WidthRequest="250"
-                HeightRequest="50" />
+                </VerticalStackLayout>
+            </Border>
 
-            <Button
-                Text="Pedidos"
-                BackgroundColor="Orange"
-                WidthRequest="250"
-                HeightRequest="50" />
+            <Border
+                Stroke="OrangeRed"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                Padding="12"
+                Grid.Row="2"
+                Grid.Column="0">
 
-        
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTrackingClicked" />
+                </Border.GestureRecognizers>
 
-    </VerticalStackLayout>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="-5">
+
+                    <Image
+                        Source="tracking.png"
+                        WidthRequest="95"
+                        HeightRequest="95"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Tracking"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Stroke="OrangeRed"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                Padding="12"
+                Grid.Row="3"
+                Grid.Column="0">
+                
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnVehiculoClicked" />
+                </Border.GestureRecognizers>
+                
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="-5">
+
+                    <Image
+                        Source="vehiculo.png"
+                        WidthRequest="95"
+                        HeightRequest="95"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Vehiculo"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Border>
+            <Border
+                Stroke="OrangeRed"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                Padding="12"
+                Grid.Row="4"
+                Grid.Column="0">
+                
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClienteClicked" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="-5">
+                    <Image
+                        Source="cliente.png"
+                        WidthRequest="95"
+                        HeightRequest="95"
+                        Aspect="AspectFit" />
+                    <Label
+                        Text="Cliente"
+                        HorizontalOptions="Center" />
+                 </VerticalStackLayout>
+
+            </Border>
+
+            <!--Segunda Fila de Botones-->
+            <Border
+                Stroke="OrangeRed"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                Padding="12"
+                BackgroundColor="White"
+                Grid.Row="1"
+                Grid.Column="1">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnConfigClicked" />
+                </Border.GestureRecognizers>
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="5">
+
+                    <Image
+                        Source="shielduser.png"
+                        WidthRequest="80"
+                        HeightRequest="80"
+                        Aspect="AspectFit" />
+
+                    <Label
+                        Text="Configuración"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Border>
+            </Border>
+
+        </Grid>
+    </ScrollView>
 
 </ContentPage>
