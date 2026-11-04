@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using MiAppMaui.Services;
+﻿
+using Microsoft.Extensions.Logging;
+
 namespace MiAppMaui;
 
 public static class MauiProgram
@@ -12,14 +13,20 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont(
+                    "OpenSans-Regular.ttf",
+                    "OpenSansRegular");
+
+                fonts.AddFont(
+                    "OpenSans-Semibold.ttf",
+                    "OpenSansSemibold");
             });
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        builder.Services.AddSingleton<MemoriaService>();
+
         return builder.Build();
     }
 }
+

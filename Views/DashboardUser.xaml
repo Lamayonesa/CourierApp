@@ -111,8 +111,8 @@
 
                     <Image
                         Source="vehiculo.png"
-                        WidthRequest="95"
-                        HeightRequest="95"
+                        WidthRequest="80"
+                        HeightRequest="80"
                         Aspect="AspectFit" />
 
                     <Label
@@ -138,8 +138,8 @@
                     Spacing="-5">
                     <Image
                         Source="cliente.png"
-                        WidthRequest="95"
-                        HeightRequest="95"
+                        WidthRequest="80"
+                        HeightRequest="80"
                         Aspect="AspectFit" />
                     <Label
                         Text="Cliente"

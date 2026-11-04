@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MiAppMaui.ViewModels"
+             xmlns:models="clr-namespace:MiAppMaui.Models"
+             x:DataType="vm:PaqueteViewModel"
              x:Class="MiAppMaui.Paquetes"
              Title="Paquetes">
 
+    <Grid RowDefinitions="*,Auto,*" Padding="0,0,0,12">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
 
@@ -12,28 +16,32 @@
                    FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
-            <Entry x:Name="DescripcionEntry"
+            <Entry Text="{Binding Descripcion}"
                    Placeholder="Descripción del paquete" />
+            <Label Text="{Binding DescripcionError}" TextColor="Red" FontSize="12" />
 
-            <Entry x:Name="DestinatarioEntry"
+            <Entry Text="{Binding Destinatario}"
                    Placeholder="Nombre del destinatario" />
+            <Label Text="{Binding DestinatarioError}" TextColor="Red" FontSize="12" />
 
-            <Entry x:Name="DestinoEntry"
+            <Entry Text="{Binding Destino}"
                    Placeholder="Dirección de destino" />
+            <Label Text="{Binding DestinoError}" TextColor="Red" FontSize="12" />
 
             <Button Text="Registrar paquete"
                     BackgroundColor="OrangeRed"
                     TextColor="White"
-                    Clicked="OnRegistrarClicked" />
+                    Command="{Binding GuardarCommand}" />
 
-            <Label Text="Paquetes registrados"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   Margin="0,15,0,0" />
-
-            <CollectionView x:Name="PaquetesCollection">
+        </VerticalStackLayout>
+    </ScrollView>
+        <Label Grid.Row="1" Text="Paquetes registrados" FontSize="20" FontAttributes="Bold" Margin="20,8" />
+            <CollectionView Grid.Row="2" ItemsSource="{Binding Paquetes}">
+                <CollectionView.EmptyView>
+                    <Label Text="Todavía no hay registros." Margin="20,8" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:Paquetes">
                         <Border Stroke="LightGray"
                                 StrokeThickness="1"
                                 Padding="12"
@@ -54,7 +62,5 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-        </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

@@ -1,57 +1,102 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MiAppMaui.Views.cliente"
-             Title="Clientes">
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="12">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MiAppMaui.ViewModels"
+    xmlns:models="clr-namespace:MiAppMaui.Models"
+    x:DataType="vm:ClienteFormViewModel"
+    x:Class="MiAppMaui.Views.cliente"
+    Title="Clientes">
 
-            <Label Text="Registro de clientes"
-                   FontSize="26"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+    <ContentPage.Resources>
+        <Style x:Key="ErrorLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,2,0,4" />
+        </Style>
+    </ContentPage.Resources>
 
-            <Entry x:Name="NombreEntry"
-                   Placeholder="Nombre completo" />
+    <Grid RowDefinitions="*,Auto,Auto,*">
 
-            <Entry x:Name="TelefonoEntry"
-                   Placeholder="Número de teléfono"
-                   Keyboard="Telephone" />
+        <ScrollView Grid.Row="0">
 
-            <Entry x:Name="DireccionEntry"
-                   Placeholder="Dirección" />
+            <VerticalStackLayout
+                Padding="16,16,16,8"
+                Spacing="8">
 
-            <Button Text="Registrar cliente"
-                    BackgroundColor="OrangeRed"
-                    TextColor="White"
-                    Clicked="OnRegistrarClicked" />
+                <Label
+                    Text="Registro de clientes"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
 
-            <Label Text="Clientes registrados"
-                   FontSize="20"
-                   FontAttributes="Bold"
-                   Margin="0,15,0,0" />
+                <!-- Nombre -->
+                <Label Text="Nombre" />
 
-            <CollectionView x:Name="ClientesCollection">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border Stroke="LightGray"
-                                StrokeThickness="1"
-                                Padding="12"
-                                Margin="0,4"
-                                StrokeShape="RoundRectangle 10">
-                            <VerticalStackLayout Spacing="5">
-                                <Label Text="{Binding Nombre}"
-                                       FontAttributes="Bold"
-                                       FontSize="17" />
-                                <Label Text="{Binding Telefono}" />
-                                <Label Text="{Binding Direccion}" />
-                            </VerticalStackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <Entry
+                    Text="{Binding Nombre}"
+                    Placeholder="Ej. Carlos" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label
+                    Text="{Binding NombreError}"
+                    Style="{StaticResource ErrorLabel}" />
+
+                <!-- Teléfono -->
+                <Label Text="Teléfono" />
+
+                <Entry
+                    Text="{Binding Telefono}"
+                    Placeholder="Número de teléfono"
+                    Keyboard="Telephone" />
+
+                <Label
+                    Text="{Binding TelefonoError}"
+                    Style="{StaticResource ErrorLabel}" />
+
+                <!-- Dirección -->
+                <Label Text="Dirección" />
+
+                <Entry
+                    Text="{Binding Direccion}"
+                    Placeholder="Ej. Santo Domingo" />
+
+                <Label
+                    Text="{Binding DireccionError}"
+                    Style="{StaticResource ErrorLabel}" />
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- Botón de registro -->
+        <Button
+            Grid.Row="1"
+            Text="Registrar cliente"
+            BackgroundColor="OrangeRed"
+            TextColor="White"
+            Command="{Binding GuardarCommand}"
+            Margin="16,8,16,16" />
+
+
+        <Label Grid.Row="2" Text="Clientes registrados" FontSize="20" FontAttributes="Bold" Margin="16,4" />
+        <CollectionView Grid.Row="3" ItemsSource="{Binding Clientes}" Margin="16,0,16,8">
+            <CollectionView.EmptyView>
+                <Label Text="Todavía no hay registros." Margin="0,8" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Cliente">
+                    <Border Stroke="LightGray" Padding="12" Margin="0,4" StrokeShape="RoundRectangle 10">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding Nombre}" />
+                            <Label Text="{Binding Telefono}" />
+                            <Label Text="{Binding Direccion}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
 </ContentPage>

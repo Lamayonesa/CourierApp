@@ -1,36 +1,55 @@
-﻿using MiAppMaui.Models;
-using System.Collections.Generic;
 
+using System.Collections.ObjectModel;
+using MiAppMaui.Models;
 
 namespace MiAppMaui.Services;
 
-public class MemoriaService
+public static class MemoriaService
 {
-    public List<Cliente> Clientes { get; private set; } = new();
-    public List<MiAppMaui.Models.Paquetes> Paquetes { get; private set; } = new();
-    public List<Tracking> Trackings { get; private set; } = new();
-    public List<Vehiculos> Vehiculos { get; private set; } = new();
+    // Contadores para asignar los ID
+    private static int _siguienteIdCliente = 1;
+    private static int _siguienteIdPaquete = 1;
+    private static int _siguienteIdTracking = 1;
+    private static int _siguienteIdVehiculo = 1;
 
-    public void AgregarCliente(Cliente cliente)
+    // Colecciones observables
+    public static ObservableCollection<Cliente> Clientes { get; }
+        = new();
+
+    public static ObservableCollection<MiAppMaui.Models.Paquetes> Paquetes { get; }
+        = new();
+
+    public static ObservableCollection<Tracking> Trackings { get; }
+        = new();
+
+    public static ObservableCollection<Vehiculos> Vehiculos { get; }
+        = new();
+
+    // Método para agregar clientes
+    public static void AgregarCliente(Cliente cliente)
     {
-        cliente.Id = Clientes.Count + 1;
+        cliente.Id = _siguienteIdCliente++;
         Clientes.Add(cliente);
     }
 
-    public void AgregarPaquetes(MiAppMaui.Models.Paquetes paquete)
+    // Método para agregar paquetes
+    public static void AgregarPaquetes(MiAppMaui.Models.Paquetes paquete)
     {
-        paquete.Id = Paquetes.Count + 1;
+        paquete.Id = _siguienteIdPaquete++;
         Paquetes.Add(paquete);
     }
-    public void AgregarTracking(Tracking tracking)
+
+    // Método para agregar tracking
+    public static void AgregarTracking(Tracking tracking)
     {
-        tracking.Id = Trackings.Count + 1;
+        tracking.Id = _siguienteIdTracking++;
         Trackings.Add(tracking);
     }
 
-    public void AgregarVehiculos(Vehiculos vehiculo)
+    // Método para agregar vehículos
+    public static void AgregarVehiculos(Vehiculos vehiculo)
     {
-        vehiculo.Id = Vehiculos.Count + 1;
+        vehiculo.Id = _siguienteIdVehiculo++;
         Vehiculos.Add(vehiculo);
     }
 }

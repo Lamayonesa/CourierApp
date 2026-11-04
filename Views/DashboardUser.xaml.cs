@@ -1,5 +1,4 @@
-using MiAppMaui.Views;
-using MiAppMaui.Models;
+﻿using MiAppMaui.Views;
 
 namespace MiAppMaui;
 
@@ -18,7 +17,7 @@ public partial class DashboardUser : ContentPage
 
     private async void OnTrackingClicked(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(Tracking));
+        await Shell.Current.GoToAsync(nameof(tracking));
     }
 
     private async void OnConfigClicked(object sender, TappedEventArgs e)
@@ -33,7 +32,7 @@ public partial class DashboardUser : ContentPage
     
     private async void OnClienteClicked(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(cliente));
+        await Shell.Current.GoToAsync("//clientes");
     }
 
 }
